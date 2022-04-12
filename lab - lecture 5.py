@@ -1,27 +1,46 @@
-#1: this code does not run!  try it and examine the errors, then figure out what needs to
-#be changed to make it work
+# 1: this code does not run!  try it and examine the errors, then figure out what needs to
+# be changed to make it work
 
 a = 10
 
+
 def first_func(b=20):
     c = 30
+
+    def second_func(d=40):
+        e = 50
+        return a + b + c + d + e
+
     value = second_func()
     return value
 
-def second_func(d=40):
-    e = 50
-    return a + b + c + d + e
 
 result = first_func()
+print(result)
 
-#2: take this code from Thursday's lab and write a function so that the form of
-#the final answer is:
-#answer = {key_func(k):val_func(v) for k, v in start_dict.items()}
+# 2: take this code from Thursday's lab and write a function so that the form of
+# the final answer is:
+# answer = {key_func(k):val_func(v) for k, v in start_dict.items()}
 
 import datetime
+
 start_dict = {'noah': '2/23/1999',
-              'sarah':'9/1/2001',
+              'sarah': '9/1/2001',
               'zach': '8/8/2005'}
-#turn it into {'Noah': datetime(1999, 2, 23),
+
+
+# turn it into {'Noah': datetime(1999, 2, 23),
 #              'Sarah':datetime(2001, 9, 1),
 #              'Zach': datetime(2005, 8, 8)}
+def key_func(k):
+    key = k.capitalize()
+    return key
+
+
+def val_func(v):
+    val = datetime.datetime.strptime(v, '%m/%d/%Y').date()
+    return val
+
+
+answer = {key_func(k): val_func(v) for k, v in start_dict.items()}
+print(answer)
