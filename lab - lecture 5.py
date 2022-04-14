@@ -27,8 +27,8 @@ start_dict = {'noah': '2/23/1999',
 def key_func(k):
     key = k.capitalize()
     return key
-def val_func(v):
-    val = datetime.datetime.strptime(v, '%m/%d/%Y').date()
+def val_func(v, date_format='%m/%d/%Y'):
+    val = datetime.datetime.strptime(v, date_format).date()
     return val
 
 answer = {key_func(k): val_func(v) for k, v in start_dict.items()}
