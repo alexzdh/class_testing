@@ -2,10 +2,10 @@
 
 #1
 class MyClass():
-    def __init__():
+    def __init__(self, a, b):
         self.a = 10
         self.b = 20
-        self.x = a + b
+        self.x = self.a + self.b
 my_instance = MyClass()
 my_instance.x
 
@@ -14,13 +14,13 @@ class MyClass():
     def __init__(self):
         a = 10
         b = 20
-        x = a + b
+        self.x = a + b
 my_instance = MyClass()
 my_instance.x
 
 #3
 class MyClass():
-    def __init__(a, b):
+    def __init__(self, a, b):
         self.x = a + b
 my_instance = MyClass(10, 20)
 my_instance.x
@@ -36,3 +36,34 @@ my_instance.x
 #        the sequence.
 #  Note that technically the Fibonacci sequence starts at 0, but for our
 #  coding practice we can calculate it from any two starting values.
+
+def fib_func(start_list, a):
+    if type(start_list) == list and len(start_list) == 2:
+        current_index = 2
+        while len(start_list) < a:
+            start_list.append(start_list[current_index - 2] + start_list[current_index - 1])
+            current_index += 1
+    return start_list
+
+print(fib_func([1, 2], 8))
+
+
+class FibClass():
+    def __init__(self, start_list):
+        self.start_list = start_list
+
+    def fib_calc(self, N):
+        start_list = self.start_list
+        if type(start_list) == list and len(start_list) == 2:
+            current_index = 2
+            while len(start_list) < N:
+                start_list.append(start_list[current_index - 2] + start_list[current_index - 1])
+                current_index += 1
+        print(start_list)
+        
+        
+print(FibClass([1, 2]).fib_calc(8))
+
+
+
+
