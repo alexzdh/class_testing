@@ -11,7 +11,8 @@ a, *b = [10, 11, 12]
 #2. what data type is args and kwargs inside the function, what are the values,
 #and how would you use them?
 def base_function(*args, **kwargs):
-    pass
+    print(args)
+    print(kwargs)
 
 base_function()
 base_function(['A', 'B'])
@@ -26,3 +27,5 @@ base_function('a', 'b', c='value', d=10)
 def my_func(a, b, func):
     value = func(a, b)
     return value
+
+print(my_func(10, 11, func=lambda a, b: (a + b) / 2))
